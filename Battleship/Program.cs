@@ -2,7 +2,7 @@ using Battleship.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddSingleton<IPlacementStrategy, JsonPlacement>();
+builder.Services.AddSingleton<IPlacementStrategy, RandomPlacement>();
 builder.Services.AddSingleton<IGameService, GameService>();
 
 builder.Services.AddControllers();
