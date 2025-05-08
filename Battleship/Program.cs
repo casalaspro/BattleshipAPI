@@ -4,27 +4,29 @@ using static System.Collections.Specialized.BitVector32;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Services.AddTransient<JsonPlacement>();
+builder.Services.AddTransient<RandomPlacement>();
 builder.Services.AddSingleton<IGameService, GameService>();
-builder.Services.AddSingleton<JsonPlacement>();
-builder.Services.AddSingleton<RandomPlacement>();
-builder.Services.AddSingleton<IPlacementStrategy>(ps =>
-{
-    var cfg = ps.GetRequiredService<IConfiguration>();
-    var type = cfg["ShipPlacement:Method"];
+//builder.Services.AddSingleton<JsonPlacement>();
+//builder.Services.AddSingleton<RandomPlacement>();
+//builder.Services.AddSingleton<IPlacementStrategy>(ps =>
+//{
+//    var cfg = ps.GetRequiredService<IConfiguration>();
+//    var type = cfg["ShipPlacement:Method"];
 
-    if (type == PlacemenStrategyEnum.Json.ToString())
-    {
-        return ps.GetRequiredService<JsonPlacement>();
-    }
-    else if (type == PlacemenStrategyEnum.Json.ToString())
-    {
-        return ps.GetRequiredService<RandomPlacement>();
-    }
-    else
-    {
-        throw new Exception("Wrong or Missing Placement Strategy from appsettings");
-    }
-});
+//    if (type == PlacemenStrategyEnum.Json.ToString())
+//    {
+//        return ps.GetRequiredService<JsonPlacement>();
+//    }
+//    else if (type == PlacemenStrategyEnum.Json.ToString())
+//    {
+//        return ps.GetRequiredService<RandomPlacement>();
+//    }
+//    else
+//    {
+//        throw new Exception("Wrong or Missing Placement Strategy from appsettings");
+//    }
+//});
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

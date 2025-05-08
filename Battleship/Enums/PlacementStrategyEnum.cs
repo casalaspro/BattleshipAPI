@@ -1,6 +1,6 @@
 ﻿namespace Battleship.Enums
 {
-    public enum PlacemenStrategyEnum
+    public enum PlacementStrategyEnum
     {
         Json,
         Random

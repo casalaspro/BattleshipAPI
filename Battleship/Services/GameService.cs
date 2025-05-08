@@ -7,18 +7,18 @@ namespace Battleship.Services
 {
     public class GameService : IGameService
     {
-        private readonly IPlacementStrategy _placement;
+        //private readonly IPlacementStrategy _placement;
         private readonly ConcurrentDictionary<Guid, Board> _games = new();
 
-        public GameService(IPlacementStrategy placement)
-        {
-            _placement = placement;
-        }
+        //public GameService(IPlacementStrategy placement)
+        //{
+        //    _placement = placement;
+        //}
 
-        public Guid InitGame()
+        public Guid InitGame(IPlacementStrategy placementStrategy)
         {
             Board board = new Board();
-            board.Ships = _placement.PlaceShips();
+            board.Ships = placementStrategy.PlaceShips();
 
             Guid id = Guid.NewGuid();
             _games[id] = board;
