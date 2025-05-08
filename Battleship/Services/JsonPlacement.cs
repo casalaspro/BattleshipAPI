@@ -11,7 +11,7 @@ namespace Battleship.Services
         public JsonPlacement(IConfiguration config) { _configuration = config; }
         public List<Ship> PlaceShips()
         {
-            string path = _configuration["ShipsPlacementsPath"];
+            string path = _configuration["ShipPlacement:JsonPlacementsPath"];
             if (path == null)
             {
                 throw new Exception("Json file path missing.");

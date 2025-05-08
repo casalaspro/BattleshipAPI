@@ -50,6 +50,13 @@ namespace Battleship.Services
 
             hitShip.Hits.Add((x, y));
 
+            bool allSunk = board.Ships.All(s => s.IsSunk);
+
+            if (allSunk)
+            {
+                return new FireResponseDTO() { Response = "Each ship sunk!" };
+            }
+
             if (hitShip.IsSunk)
             {
                 return new FireResponseDTO() { Response = $"{OutcomeEnum.Sunk.ToString()} {hitShip.Name}" };
